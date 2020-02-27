@@ -28,9 +28,9 @@ class DisplayPerformanceData extends Component {
 
         if (this.state.performanceData != null) {
             dataIndex = (
-                <div>
+                <div id="index">
                     {this.state.performanceData.map(item => {
-                        return<div id="index" key={item.id}>{item.data.message}</div>
+                        return<div key={item.id}>{item.data.message}</div>
                     })}
                 </div>
             )

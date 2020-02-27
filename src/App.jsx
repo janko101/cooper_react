@@ -16,7 +16,6 @@ class App extends Component {
     entrySaved: false,
     renderIndex: false
   };
-  
 
   onLogin = async e => {
     e.preventDefault();
@@ -34,13 +33,12 @@ class App extends Component {
   onChangeHandler = e => {
     this.setState({ [e.target.name]: e.target.value, entrySaved: false });
   };
-  
+
   render() {
-    
     const { renderLoginForm, authenticated, message } = this.state;
     let renderLogin;
     let performanceDataIndex;
-    
+
     switch (true) {
       case renderLoginForm && !authenticated:
         renderLogin = <LoginForm submitFormHandler={this.onLogin} />;
@@ -55,13 +53,14 @@ class App extends Component {
               Login
             </button>
             <p id="message"> {message}</p>
-
           </>
         );
         break;
       case authenticated:
         renderLogin = (
-          <p id="message">Hi {JSON.parse(sessionStorage.getItem("credentials")).uid}</p>
+          <p id="message">
+            Hi {JSON.parse(sessionStorage.getItem("credentials")).uid}
+          </p>
         );
         if (this.state.renderIndex) {
           performanceDataIndex = (
@@ -70,14 +69,20 @@ class App extends Component {
                 updateIndex={this.state.updateIndex}
                 indexUpdated={() => this.setState({ updateIndex: false })}
               />
-              <button onClick={() => this.setState({ renderIndex: false })}>Hide past entries</button>
+              <button onClick={() => this.setState({ renderIndex: false })}>
+                Hide past entries
+              </button>
             </>
-          )
+          );
         } else {
           performanceDataIndex = (
-            <button id="show-index" onClick={() => this.setState({ renderIndex: true })}
-            >Show past entries</button>
-          )
+            <button
+              id="show-index"
+              onClick={() => this.setState({ renderIndex: true })}
+            >
+              Show past entries
+            </button>
+          );
         }
     }
     return (
@@ -90,7 +95,9 @@ class App extends Component {
           age={this.state.age}
           authenticated={this.state.authenticated}
           entrySaved={this.state.entrySaved}
-          entryHandler={() => this.setState({ entrySaved: true, updateIndex: true })}
+          entryHandler={() =>
+            this.setState({ entrySaved: true, updateIndex: true })
+          }
         />
         {performanceDataIndex}
       </>
