@@ -12,8 +12,10 @@ class App extends Component {
     renderLoginForm: false,
     authenticated: false,
     message: "",
-    entrySaved: false
+    entrySaved: false,
+    renderIndex: false
   };
+  
 
   onLogin = async e => {
     e.preventDefault();
@@ -31,10 +33,13 @@ class App extends Component {
   onChangeHandler = e => {
     this.setState({ [e.target.name]: e.target.value, entrySaved: false });
   };
-
+  
   render() {
+    
     const { renderLoginForm, authenticated, message } = this.state;
     let renderLogin;
+    let performanceDataIndex;
+    
     switch (true) {
       case renderLoginForm && !authenticated:
         renderLogin = <LoginForm submitFormHandler={this.onLogin} />;
@@ -57,6 +62,10 @@ class App extends Component {
         renderLogin = (
           <p id="message">Hi {JSON.parse(sessionStorage.getItem("credentials")).uid}</p>
         );
+        performanceDataIndex = (
+          <button id="show-index" onClick={() => this.setState({ renderIndex: true })}
+          >Show past entries</button>
+        )
         break;
     }
     return (
@@ -69,8 +78,9 @@ class App extends Component {
           age={this.state.age}
           authenticated={this.state.authenticated}
           entrySaved={this.state.entrySaved}
-          entryHandler={() => this.setState({ entrySaved: true })}
+          entryHandler={() => this.setState({ entrySaved: true, updateIndex: true })}
         />
+        {performanceDataIndex}
       </>
     );
   }
