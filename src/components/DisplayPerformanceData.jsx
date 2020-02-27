@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { saveData } from "../modules/performanceData";
+import { getData } from "../modules/performanceData";
 
 class DisplayPerformanceData extends Component {
     state = {
@@ -30,7 +30,7 @@ class DisplayPerformanceData extends Component {
             dataIndex = (
                 <div>
                     {this.state.performanceData.map(item => {
-                        return<div key={item.id}>{item.data.message}</div>
+                        return<div id="index" key={item.id}>{item.data.message}</div>
                     })}
                 </div>
             )
