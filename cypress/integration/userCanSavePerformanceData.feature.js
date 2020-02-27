@@ -9,6 +9,14 @@ describe("User attempts save data", () => {
                 uid: "user@mail.com"
             }
         });
+        cy.route ({
+            method: "POST",
+            url: "http://localhost:3000/api/v1/performance_data",
+            response: {},
+            headers: {
+                uid: "user@mail.com"
+            }
+        });
         cy.visit("/");
 
         cy.get("login").click();
