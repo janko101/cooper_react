@@ -29,7 +29,7 @@ describe('User attempts to view his/her performance data', () => {
         cy.get('#index').within(() => {
             cy.contains('Below Average')
             cy.contains('Average')
-            cy.contains('Above Average')
+            cy.contains("Above Average")
         })
     })
 })
