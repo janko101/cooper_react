@@ -15,7 +15,7 @@ const authenticate = async (email, password) => {
 
 const storeAuthCredentials = ({ headers }) => {
     const credentials = {
-        uid: header["uid"],
+        uid: headers["uid"],
         client: headers["client"],
         access_token: headers["access-token"],
         expiry: headers["expiry"],
