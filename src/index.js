@@ -5,7 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import axios from "axios";
 
-axios.defaults.baseURL = "https://coopertest.herokuapp.com/";
+axios.defaults.baseURL = "https://git.heroku.com/coopertest.git";
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
