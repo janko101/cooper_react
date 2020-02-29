@@ -54,7 +54,8 @@ class DisplayPerformanceData extends Component {
     let dataForLineDiagram = {
       datasets: [
         {
-          data: distances
+          data: distances,
+          label: "Result History"
         }],
       labels: labels
     };
