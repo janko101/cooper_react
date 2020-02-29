@@ -1,47 +1,71 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { getData } from "../modules/performanceData";
+import { Line } from "react-chartjs-2";
 
 class DisplayPerformanceData extends Component {
-    state = {
-        performanceData: null
+  state = {
+    performanceData: null
+  };
+
+  componentDidMount() {
+    this.getPerformanceData();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.updateIndex != prevProps.updateIndex) {
+      this.getPerformanceData();
+    }
+  }
+
+  async getPerformanceData() {
+    let result = await getData();
+    this.setState({ performanceData: result.data.entries }, () => {
+      this.props.indexUpdated();
+    });
+  }
+
+  render() {
+    let dataIndex;
+
+    if (this.state.performanceData != null) {
+      dataIndex = (
+        <div id="index">
+          {this.state.performanceData.map(item => {
+            return (
+              <div key={item.id}>
+                {item.data.message} {item.data.distance}
+              </div>
+            );
+          })}
+        </div>
+      );
     }
 
-    componentDidMount() {
-        this.getPerformanceData()
+    const distances = [];
+    const labels = [];
+
+    if (this.state.performanceData != null) {
+      this.state.performanceData.forEach(entry => {
+        distances.push(entry.data.distance);
+        labels.push(entry.data.message);
+      });
     }
 
-    componentDidUpdate(prevProps) {
-        if (this.props.updateIndex != prevProps.updateIndex) {
-            this.getPerformanceData()
-        }
-    }
+    let dataForLineDiagram = {
+      datasets: [
+        {
+          data: distances
+        }],
+      labels: labels
+    };
 
-    async getPerformanceData() {
-        let result = await getData();
-        this.setState({performanceData: result.data.entries}, () => {
-            this.props.indexUpdated();
-        })
-    }
-
-    render () {
-        let dataIndex;
-
-        if (this.state.performanceData != null) {
-            dataIndex = (
-                <div id="index">
-                    {this.state.performanceData.map(item => {
-                        return<div key={item.id}>{item.data.message} {item.data.distance}</div>
-                    })}
-                </div>
-            )
-        }
-
-        return (
-            <div>
-                {dataIndex}
-            </div>
-        )
-    }
+    return (
+      <div>
+        {dataIndex}
+        <Line data={dataForLineDiagram} />
+      </div>
+    );
+  }
 }
 
-export default DisplayPerformanceData
+export default DisplayPerformanceData;
