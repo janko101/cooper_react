@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { getData } from "../modules/performanceData";
-import { Line } from "react-chartjs-2";
+import { Line, Pie } from "react-chartjs-2";
 
 class DisplayPerformanceData extends Component {
   state = {
@@ -55,6 +55,17 @@ class DisplayPerformanceData extends Component {
       datasets: [
         {
           data: distances,
+          label: "Result History",
+          backgroundColor: '#ff6384'
+        
+        }],
+      labels: labels
+    };
+
+    let dataForPieDiagram = {
+      datasets: [
+        {
+          data:  distances,
           label: "Result History"
         }],
       labels: labels
@@ -64,6 +75,7 @@ class DisplayPerformanceData extends Component {
       <div>
         {dataIndex}
         <Line data={dataForLineDiagram} />
+        <Pie data={dataForPieDiagram} />
       </div>
     );
   }
