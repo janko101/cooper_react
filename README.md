@@ -1,68 +1,68 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![Netlify Status](https://api.netlify.com/api/v1/badges/235a35a9-e9c8-4bd7-b91e-11c50327d3c2/deploy-status)](https://app.netlify.com/sites/cooper-test-hunter-janko/deploys)
 
-## Available Scripts
+# The Cooper Test Challenge  
+### Authors  
+[Janko Radakovic](https://github.com/MadFarmer101)  
+[Hunter Vitous](https://github.com/hmvitous)
 
-In the project directory, you can run:
+## Built with  
+**Front End:** React v.16.12.0 
+**Back End:** Rails 6.0.2.1  
+**Testing frameworks:** RSpec and Enzyme/Jest  
+**Deployed at:** [Netlify](https://cooper-test-hunter-janko.netlify.app/)  and [Heroku](https://www.heroku.com/).  
 
-### `yarn start`
+## The code   
+This project is the client facing side of our Cooper Test application. Our repositories for the Cooper API built in Rails can be found at the following links for [Janko](https://github.com/MadFarmer101/cooper_backend.git) and [Hunter](https://github.com/hmvitous/Cooper_Backend.git).
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Getting started
+### Dependencies  
+* Yarn
+* React
+* Enzyme
+* Cypress
+* Axios
+* Chart.js
+* react-chartjs-2 
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
 
-### `yarn test`
+### Setup   
+To test this application, fork the repo to your own GitHub account and clone it to your local workspace. </br>
+*Note:*Be sure to set up backend api first (noted above), in order to fully interact with the application. 
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Install all of the dependencies:    
+```
+$ yarn install
+```  
+Run the unit tests:  
+```
+$ yarn test
+```  
+Start cypress and run the feature tests:  
+```
+$ yarn run cy:open
+```
+Start the backend api (if already configured) in a separate terminal (only run this command for the Rails application):
+```
+$ rails s
+```
+Start the React application and run it on your local host:
+```
+$ yarn start
+```
 
-### `yarn build`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Exploring the app online or in local host  
+Use the following test-credentials to test interaction with the application:  
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+**Email:** `user@mail.com`  
+**Password:** `password`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Updates/Improvements   
+- Add styling
+- Add more graphs and charts for performance data
 
-### `yarn eject`
+## License  
+[MIT-license](https://en.wikipedia.org/wiki/MIT_License)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### Acknowledgement  
+Material provided by [Craft Academy](https://craftacademy.se). 
